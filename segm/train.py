@@ -23,16 +23,17 @@ from contextlib import suppress
 from segm.utils.distributed import sync_model
 from segm.engine import train_one_epoch, evaluate
 
-
+import os
+os.environ['DATASET'] = '/home/katsikasd/PycharmProjects/segmenter/dataset'
 @click.command(help="")
-@click.option("--log-dir", type=str, help="logging directory")
-@click.option("--dataset", type=str)
+@click.option("--log-dir", default='./runs', type=str, help="logging directory")
+@click.option("--dataset", default='ade20k', type=str)
 @click.option("--im-size", default=None, type=int, help="dataset resize size")
 @click.option("--crop-size", default=None, type=int)
 @click.option("--window-size", default=None, type=int)
 @click.option("--window-stride", default=None, type=int)
-@click.option("--backbone", default="", type=str)
-@click.option("--decoder", default="", type=str)
+@click.option("--backbone", default="vit_tiny_patch16_384", type=str)
+@click.option("--decoder", default="mask_transformer", type=str)
 @click.option("--optimizer", default="sgd", type=str)
 @click.option("--scheduler", default="polynomial", type=str)
 @click.option("--weight-decay", default=0.0, type=float)

@@ -5,7 +5,8 @@ import zipfile
 from pathlib import Path
 from segm.utils.download import download
 
-
+import os
+os.environ['DATASET'] = 'dataset'
 def download_ade(path, overwrite=False):
     _AUG_DOWNLOAD_URLS = [
         (
